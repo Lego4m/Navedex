@@ -44,7 +44,7 @@ function Home() {
       <div className="bar">
         <h1>Navers</h1>
 
-        <Link to="/addnaver">Adicionar Naver</Link>
+        <Link to="/newnaver">Adicionar Naver</Link>
       </div>
 
       <ul>
