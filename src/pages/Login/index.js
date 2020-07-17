@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
@@ -9,6 +10,8 @@ import logo from '../../assets/logo.svg';
 import { Container, InputBlock } from './styles';
 
 export default function Login() {
+  const history = useHistory();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,6 +22,8 @@ export default function Login() {
       const response = await api.post('/users/login', { email, password });
 
       localStorage.setItem('user', JSON.stringify(response.data));
+
+      history.push('/home');
     } catch (err) {
       toast.error('Erro ao entrar, suas informações estão corretas?');
     }
