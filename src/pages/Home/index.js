@@ -37,6 +37,10 @@ function Home() {
     loadNavers();
   }, [history]);
 
+  function handleEdit(id) {
+    history.push(`/editnaver/${encodeURIComponent(id)}`);
+  }
+
   return (
     <Container>
       <Header />
@@ -60,7 +64,7 @@ function Home() {
                 <img src={deleteIcon} alt="Deletar" />
               </button>
 
-              <button type="button" onClick={() => {}}>
+              <button type="button" onClick={() => handleEdit(naver.id)}>
                 <img src={editIcon} alt="Editar" />
               </button>
             </div>
