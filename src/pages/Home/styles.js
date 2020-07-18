@@ -88,3 +88,89 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const ExcludeModalContainer = styled.div`
+  width: 592px;
+  padding: 32px;
+
+  h1 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: #212121;
+  }
+
+  p {
+    margin-top: 24px;
+
+    font-size: 16px;
+    line-height: 36px;
+
+    color: #212121;
+  }
+
+  div.buttons {
+    display: flex;
+    margin-top: 33px;
+
+    button {
+      width: 176px;
+
+      padding: 8px 16px;
+
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    button.cancel {
+      background: #ffffff;
+      margin-left: auto;
+      border: 1px solid #212121;
+
+      color: #212121;
+    }
+
+    button.confirm {
+      background: #212121;
+      margin-left: 24px;
+      border: 0;
+
+      color: #ffffff;
+    }
+  }
+`;
+
+export const SuccessModalContainer = styled.div`
+  width: 592px;
+  padding: 32px;
+
+  h1 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: #212121;
+  }
+
+  p {
+    margin-top: 24px;
+
+    font-size: 16px;
+    line-height: 36px;
+
+    color: #212121;
+  }
+
+  button {
+    display: flex;
+    position: absolute;
+
+    background: none;
+    border: 0;
+
+    top: 29px;
+    right: 29px;
+  }
+`;
