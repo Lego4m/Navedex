@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
+import moment from 'moment';
+
 import api from '../../services/api';
 
 import deleteIcon from '../../assets/delete.svg';
@@ -12,6 +14,7 @@ import Header from '../../components/Header';
 
 import {
   Container,
+  ShowModalContainer,
   ExcludeModalContainer,
   SuccessModalContainer,
 } from './styles';
@@ -21,6 +24,7 @@ function Home() {
 
   const [navers, setNavers] = useState([]);
 
+  const [showModal, setShowModal] = useState({ open: false, naver: {} });
   const [excludeModal, setExcludeModal] = useState({ open: false, id: '' });
   const [successModal, setSuccessModal] = useState(false);
 
@@ -61,6 +65,7 @@ function Home() {
 
     setNavers(navers.filter((n) => n.id !== id));
 
+    setShowModal({ open: false, naver: {} });
     setExcludeModal({ open: false, id: '' });
     setSuccessModal(true);
   }
@@ -78,7 +83,11 @@ function Home() {
       <ul>
         {navers.map((naver) => (
           <li key={naver.id}>
-            <img src={naver.url} alt={naver.name} />
+            <img
+              src={naver.url}
+              alt={naver.name}
+              onClick={() => setShowModal({ open: true, naver })}
+            />
 
             <strong>{naver.name}</strong>
             <p>{naver.job_role}</p>
@@ -98,6 +107,71 @@ function Home() {
           </li>
         ))}
       </ul>
+
+      {/* Modal de vizualização */}
+
+      <RewiredModal
+        open={showModal.open}
+        onClose={() => setShowModal({ open: false, naver: {} })}
+      >
+        <ShowModalContainer>
+          <img src={showModal.naver.url} alt={showModal.naver.name} />
+
+          <div className="content">
+            <h1>{showModal.naver.name}</h1>
+
+            <p>{showModal.naver.job_role}</p>
+
+            <div className="infoBlock">
+              <strong>Idade</strong>
+              <span>
+                {Math.abs(
+                  moment(showModal.naver.birthdate).diff(moment(), 'years')
+                )}
+              </span>
+            </div>
+
+            <div className="infoBlock">
+              <strong>Tempo de empresa</strong>
+              <span>
+                {Math.abs(
+                  moment(showModal.naver.admission_date).diff(moment(), 'years')
+                )}
+              </span>
+            </div>
+
+            <div className="infoBlock">
+              <strong>Projetos que participou</strong>
+              <span>{showModal.naver.project}</span>
+            </div>
+
+            <div className="tools">
+              <button
+                type="button"
+                onClick={() =>
+                  setExcludeModal({ open: true, id: showModal.naver.id })
+                }
+              >
+                <img src={deleteIcon} alt="Deletar" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleEdit(showModal.naver.id)}
+              >
+                <img src={editIcon} alt="Editar" />
+              </button>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setShowModal({ open: false, naver: {} })}
+          >
+            <img src={xIcon} alt="x" />
+          </button>
+        </ShowModalContainer>
+      </RewiredModal>
 
       {/* Modal de confirmação de exclusão */}
 

@@ -49,6 +49,7 @@ export const Container = styled.div`
         height: 280px;
         width: 280px;
 
+        cursor: pointer;
         background: #c4c4c4;
 
         margin-bottom: 16px;
@@ -82,10 +83,88 @@ export const Container = styled.div`
         }
 
         button + button {
-          margin-left: 11px;
+          margin-left: 16px;
         }
       }
     }
+  }
+`;
+
+export const ShowModalContainer = styled.div`
+  width: 1006px;
+
+  display: flex;
+
+  > img {
+    height: 503px;
+    width: 503px;
+  }
+
+  div.content {
+    display: flex;
+    flex-direction: column;
+
+    padding: 32px;
+
+    h1 {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 36px;
+    }
+
+    p {
+      margin-top: 10px;
+
+      font-size: 16px;
+      color: #212121;
+    }
+
+    div.infoBlock {
+      margin-top: 24px;
+
+      display: flex;
+      flex-direction: column;
+
+      strong {
+        font-weight: 600;
+        font-size: 16px;
+
+        color: #212121;
+      }
+
+      span {
+        margin-top: 10px;
+
+        font-size: 16px;
+        color: #212121;
+      }
+    }
+
+    div.tools {
+      display: flex;
+      margin-top: auto;
+
+      button {
+        background: none;
+
+        border: 0;
+      }
+
+      button + button {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  > button {
+    display: flex;
+    position: absolute;
+
+    background: none;
+    border: 0;
+
+    top: 29px;
+    right: 29px;
   }
 `;
 
