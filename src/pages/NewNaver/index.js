@@ -5,13 +5,23 @@ import { toast } from 'react-toastify';
 import api from '../../services/api';
 
 import backArrow from '../../assets/backArrow.svg';
+import xIcon from '../../assets/x.svg';
 
+import RewiredModal from '../../components/RewiredModal';
 import Header from '../../components/Header';
 
-import { Container, Content, InputGroup, InputBlock } from './styles';
+import {
+  Container,
+  Content,
+  InputGroup,
+  InputBlock,
+  ModalContainer,
+} from './styles';
 
 function NewNaver() {
   const history = useHistory();
+
+  const [open, setOpen] = useState(false);
 
   const [name, setName] = useState('');
   const [job, setJob] = useState('');
@@ -41,7 +51,7 @@ function NewNaver() {
         },
       });
 
-      history.push('/home');
+      setOpen(true);
     } catch (err) {
       toast.error('Erro ao adicionar naver.');
     }
@@ -130,6 +140,18 @@ function NewNaver() {
           <button type="submit">Salvar</button>
         </form>
       </Content>
+
+      <RewiredModal open={open} onClose={() => history.push('/home')}>
+        <ModalContainer>
+          <h1>Naver criado.</h1>
+
+          <p>Naver criado com sucesso!</p>
+
+          <Link to="/home">
+            <img src={xIcon} alt="x" />
+          </Link>
+        </ModalContainer>
+      </RewiredModal>
     </Container>
   );
 }

@@ -84,3 +84,33 @@ export const InputBlock = styled.div`
     line-height: 24px;
   }
 `;
+
+export const ModalContainer = styled.div`
+  width: 592px;
+  padding: 32px;
+
+  h1 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: #212121;
+  }
+
+  p {
+    margin-top: 24px;
+
+    font-size: 16px;
+    line-height: 36px;
+
+    color: #212121;
+  }
+
+  a {
+    display: flex;
+    position: absolute;
+
+    top: 29px;
+    right: 29px;
+  }
+`;
